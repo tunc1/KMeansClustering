@@ -27,41 +27,29 @@ namespace KMeansClustering
             if (nodes.Count > 0)
             {
                 int smallestX = nodes[0].X;
+                int biggestX = nodes[0].X;
+                int biggestY = nodes[0].Y;
+                int smallestY = nodes[0].Y;
                 for (int i = 1; i < nodes.Count; i++)
                 {
                     Node node = nodes[i];
                     if (smallestX > node.X)
                         smallestX = node.X;
-                }
-                int biggestX = nodes[0].X;
-                for (int i = 1; i < nodes.Count; i++)
-                {
-                    Node node = nodes[i];
                     if (biggestX < node.X)
                         biggestX = node.X;
-                }
-                int centerX = (biggestX + smallestX) / 2;
-                if (centerX != this.CenterX)
-                    HasChanged = true;
-                this.CenterX = centerX;
-                int smallestY = nodes[0].Y;
-                for (int i = 1; i < nodes.Count; i++)
-                {
-                    Node node = nodes[i];
                     if (smallestY > node.Y)
                         smallestY = node.Y;
-                }
-                int biggestY = nodes[0].Y;
-                for (int i = 1; i < nodes.Count; i++)
-                {
-                    Node node = nodes[i];
                     if (biggestY < node.Y)
                         biggestY = node.Y;
                 }
-                int centerY = (smallestY + biggestY) / 2;
-                if (centerY != this.CenterY)
+                int centerX = (biggestX + smallestX) / 2;
+                if (centerX != CenterX)
                     HasChanged = true;
-                this.CenterY = centerY;
+                CenterX = centerX;
+                int centerY = (smallestY + biggestY) / 2;
+                if (centerY != CenterY)
+                    HasChanged = true;
+                CenterY = centerY;
             }
         }
         public void Add(Node node)
