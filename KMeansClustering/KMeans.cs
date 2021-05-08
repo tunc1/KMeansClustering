@@ -23,30 +23,18 @@ namespace KMeansClustering
         private void findBiggestAndSmallest()
         {
             smallestX = nodes[0].X;
+            biggestX = nodes[0].X;
+            smallestY = nodes[0].Y;
+            biggestY = nodes[0].Y;
             for (int i = 1; i < nodes.Count; i++)
             {
                 Node node = nodes[i];
                 if (smallestX > node.X)
                     smallestX = node.X;
-            }
-            biggestX = nodes[0].X;
-            for (int i = 1; i < nodes.Count; i++)
-            {
-                Node node = nodes[i];
                 if (biggestX < node.X)
                     biggestX = node.X;
-            }
-            smallestY = nodes[0].Y;
-            for (int i = 1; i < nodes.Count; i++)
-            {
-                Node node = nodes[i];
                 if (smallestY > node.Y)
                     smallestY = node.Y;
-            }
-            biggestY = nodes[0].Y;
-            for (int i = 1; i < nodes.Count; i++)
-            {
-                Node node = nodes[i];
                 if (biggestY < node.Y)
                     biggestY = node.Y;
             }
