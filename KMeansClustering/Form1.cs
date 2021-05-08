@@ -125,5 +125,11 @@ namespace KMeansClustering
         {
             isDragged = false;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            buttons.Clear();
+            panel1.Controls.Clear();
+        }
     }
 }
