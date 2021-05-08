@@ -16,15 +16,20 @@ namespace KMeansClustering
         private Point firstPoint;
         private Random random;
         private List<Button> buttons;
+        private List<ClusterCenterView> clusterCenterViews;
         public Form1()
         {
             InitializeComponent();
             random = new Random();
             buttons = new List<Button>();
+            clusterCenterViews = new List<ClusterCenterView>();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            foreach (ClusterCenterView center in clusterCenterViews)
+                panel1.Controls.Remove(center);
+            clusterCenterViews=new List<ClusterCenterView>();
             List<Node> nodes=new List<Node>();
             foreach (Button button in buttons)
             {
@@ -38,6 +43,10 @@ namespace KMeansClustering
             for(int i=0;i<clusters.Count;i++)
             {
                 Cluster cluster=clusters[i];
+                ClusterCenterView center = new ClusterCenterView();
+                center.Location = new Point(cluster.CenterX, cluster.CenterY);
+                panel1.Controls.Add(center);
+                clusterCenterViews.Add(center);
                 foreach (Node node in cluster.Nodes)
                 {
                     Button button=getNode(node.X,node.Y);
